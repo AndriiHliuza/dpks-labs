@@ -1,0 +1,6 @@
+Number of clusters,Number of nodes,Diameter,Avr diameter,Degree,Cost,Traffic
+1,9,4,2.0,4,12,1.0
+2,18,5,2.412,5,33,0.965
+3,27,5,2.538,6,63,0.846
+4,36,5,2.778,6,86,0.926
+5,45,5,2.919,6,110,0.973

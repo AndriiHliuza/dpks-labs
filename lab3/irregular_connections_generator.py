@@ -31,6 +31,10 @@ class IrregularConnectionsGenerator:
                         cluster_nodes_groups[i][j][1] != cluster_nodes_groups[len(cluster_nodes_groups) - 1 - j][len(cluster_nodes_groups) - 1 - i][1]):
                     edges.append((cluster_nodes_groups[i][j][1], cluster_nodes_groups[len(cluster_nodes_groups) - 1 - j][len(cluster_nodes_groups) - 1 - i][1]))
 
+                if j > 0 and i + 1 < len(cluster_nodes_groups) and j - 1 < len(cluster_nodes_groups[i + 1]):
+                    edges.append((cluster_nodes_groups[i][j][0], cluster_nodes_groups[i + 1][j - 1][0]))
+
+
         self.__graph.add_edges_from(edges)
         self.__irregular_edges = edges
 

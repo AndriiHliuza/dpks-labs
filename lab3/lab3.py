@@ -25,7 +25,7 @@ def generate_graph(number_of_clusters):
     graph = regular_connection_generator.graph
     edges_data.update(regular_connection_generator.edges_data)
 
-    irregular_connection_generator: IrregularConnectionsGenerator = IrregularConnectionsGenerator(graph)
+    irregular_connection_generator: IrregularConnectionsGenerator = IrregularConnectionsGenerator(graph, number_of_clusters)
     graph = irregular_connection_generator.graph
     edges_data.update(irregular_connection_generator.edges_data)
 
@@ -62,7 +62,7 @@ def main(number_of_clusters, draw: bool = False, calculate_topology_characterist
     if draw:
         basic_clusters_generator: BasicClustersGenerator = BasicClustersGenerator(number_of_clusters)
         graph: nx.Graph = basic_clusters_generator.basic_cluster
-        positions: Dict[int, Tuple[float, float]] = basic_clusters_generator.positions
+        positions: Dict[int, Tuple[float, float, float]] = basic_clusters_generator.positions
 
 
         fig = plt.figure(figsize=(10, 8))
@@ -91,7 +91,7 @@ def main(number_of_clusters, draw: bool = False, calculate_topology_characterist
             z_edge = [positions[edge[0]][2], positions[edge[1]][2]]
             ax.plot(x_edge, y_edge, z_edge, color='green')
 
-        irregular_connection_generator: IrregularConnectionsGenerator = IrregularConnectionsGenerator(graph)
+        irregular_connection_generator: IrregularConnectionsGenerator = IrregularConnectionsGenerator(graph, number_of_clusters)
         graph = irregular_connection_generator.graph
         irregular_edges_data = irregular_connection_generator.edges_data
 
